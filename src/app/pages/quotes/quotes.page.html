@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="bbad">
+    <ion-title class="ion-text-center"> Quotes </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- 
+    code reference:
+    https://www.freecodecamp.org/news/how-to-build-your-first-ionic-4-app-with-api-calls-f6ea747dc17a/
+    ngModel: save what the user write in the varible searchTerm
+    ionChange: detect when the value in the variable change and call to the method
+-->
+<ion-content>
+
+    <ion-searchbar debounce="200" [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Search by author">
+    </ion-searchbar>
+    
+    <ion-list>
+        <ion-item button detail lines="inset" *ngFor="let quote of (quotes | async)" (click)="openDetails(quote)">
+            <ion-icon name="receipt-outline" slot="start" color="micon"></ion-icon>
+            <ion-label>{{ quote.quote }}</ion-label>  
+        </ion-item>
+    </ion-list>
+
+</ion-content>
